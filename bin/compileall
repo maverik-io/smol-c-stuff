@@ -1,0 +1,9 @@
+#! /bin/sh
+
+files="$(find . -name "*.c")"
+for VAR in $files; do
+  name="${VAR%.*}"
+  name="${name#*./src/}"
+  echo "Compiling $name..."
+  command gcc -o "out/$name" "$VAR" -lm
+done
